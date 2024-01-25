@@ -4,6 +4,12 @@ $localhost = "localhost"; // we can also define 127.0.0.1
 $user = "sixdgt"; // database user
 $password = "1234"; // database user password
 
+// redirect function
+function redirect(){
+    // header() function is use to redirect page in php
+    header("Location: ../authentication/login.php");
+}
+
 // this function takes 4 params and establish db connection
 function createConnection($param_host, $param_user, $param_password, $param_db){
     $connection = mysqli_connect($param_host, $param_user, $param_password, $param_db);
@@ -63,6 +69,9 @@ if($connection){
     } catch(Exception $e){
         echo "Table already exist!!<br>";
         echo "Error: {$e->getMessage()}<br>";
+    } finally{
+        // finally execute anyhow either exception raise or handle
+        redirect();
     }
     
 } else {
