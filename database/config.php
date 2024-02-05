@@ -26,3 +26,13 @@ function getUserByUsername($connection, $param_username){
     }
     return $response;
 }
+
+function registerUser($connection, $sql){
+    $status = false;
+
+    $res = mysqli_query($connection, $sql);
+    if($res){
+        $status = true;
+    }
+    return $status;
+}
