@@ -31,5 +31,5 @@ if(isset($_POST['register'])){
         exit();
     }
     echo "Registered successfully!!";
-
+    header("location: login.php?status=success");
 }

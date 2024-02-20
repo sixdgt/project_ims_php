@@ -20,6 +20,7 @@ function getUserByUsername($connection, $param_username){
                     "username" => $row["username"],
                     "email" => $row["email"],
                     "password" => $row["passkey"],
+                    "usertype" => $row["user_type_id"],
                 ];
             }
         }
