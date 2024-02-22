@@ -4,6 +4,8 @@ include_once("../database/config.php");
 
 // user registration
 if(isset($_POST['register'])){
+    require_once "../config/mail_handler.php";
+    require_once '../config/random_string_handler.php';
     // user input
     $inputEmail = $_POST['email'];
     $inputUsername = $_POST['username'];
@@ -30,6 +32,8 @@ if(isset($_POST['register'])){
         echo "Request Failed!!";
         exit();
     }
-    echo "Registered successfully!!";
+
+    sendEmail("sender_email_address", $inputEmail, generateRandom());
+    echo `<script>alert("Registered successfully!!")</script>`;
     header("location: login.php?status=success");
 }
