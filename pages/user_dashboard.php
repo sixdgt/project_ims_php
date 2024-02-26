@@ -18,6 +18,7 @@ if($_SESSION['is_verified'] == 0){
     </head>
     <body>
         Verified
+        <a href="../config/logout_handler.php">Logout</a>
     </body>
     </html>
     <?php
