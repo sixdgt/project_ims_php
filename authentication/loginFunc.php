@@ -5,7 +5,7 @@ if(isset($_POST['login'])){
 
     // importing config file
     include("../database/config.php");
-
+    include("../config/dashboard_handler.php");
     // taking user input parameter
     $inputUsername = "";
     $inputPassword = "";
@@ -55,8 +55,19 @@ if(isset($_POST['login'])){
             "email" => $data["email"],
         );
 
-        header("location: ../pages/admin_dashboard.php?status=success");
-        exit();
+        $_SESSION['is_verified'] = $data['is_verified'];
+
+        // redirecting user with respect to their types
+        if($inputUsertype == 1){
+            redirect_dashboard("admin");
+            exit();
+        } else if ($inputUsertype == 2){
+            redirect_dashboard("user");
+            exit();
+        } else if ($inputUsertype == 3){
+            redirect_dashboard("student");
+            exit();
+        }
     }
 
     echo "Invalid Username or password";

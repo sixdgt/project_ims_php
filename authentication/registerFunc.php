@@ -21,19 +21,17 @@ if(isset($_POST['register'])){
     
     // hashing password
     $hashPasskey = password_hash($inputPasskey, PASSWORD_BCRYPT);
-
+    $verification_code = generateRandom();
     // building sql query
-    $sql = "INSERT INTO ims_user(`email`, `username`, `passkey`, `user_type_id`, `is_removed`) VALUES(
-        '$inputEmail', '$inputUsername', '$hashPasskey', $inputUserType, 0
-    )";
-
+    $sql = "INSERT INTO ims_user(`email`, `username`, `passkey`, `user_type_id`, `is_removed`, `verification_code`) VALUES(
+        '$inputEmail', '$inputUsername', '$hashPasskey', $inputUserType, 0, '$verification_code')";
+    
     // calling user register function from config 
     if(!registerUser($connection, $sql)){
         echo "Request Failed!!";
         exit();
     }
-
-    sendEmail("sender_email_address", $inputEmail, generateRandom());
-    echo `<script>alert("Registered successfully!!")</script>`;
+    
+    sendEmail("c4crytp@gmail.com", $inputEmail, $verification_code);
     header("location: login.php?status=success");
 }

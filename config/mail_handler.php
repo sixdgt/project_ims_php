@@ -12,8 +12,8 @@ function sendEmail($sender, $receiver, $verification_code){
         // $mail->SMTPDebug = 2; // for displaying debug response message
         $mail->isSMTP();
         $mail->Host = "smtp.gmail.com"; // gmail STMP server
-        $mail->Username = "host_email_address"; // Host Email User
-        $mail->Password = "host_email_app_password"; // Host App Password
+        $mail->Username = "c4crypt@gmail.com"; // Host Email User
+        $mail->Password = "ngqrrrwndjvqszbe"; // Host App Password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
         $mail->SMTPAuth = true;

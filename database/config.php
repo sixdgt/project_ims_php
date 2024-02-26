@@ -21,6 +21,7 @@ function getUserByUsername($connection, $param_username){
                     "email" => $row["email"],
                     "password" => $row["passkey"],
                     "usertype" => $row["user_type_id"],
+                    "is_verified" => $row["is_verified"]
                 ];
             }
         }
