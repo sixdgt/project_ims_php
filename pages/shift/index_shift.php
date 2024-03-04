@@ -29,6 +29,9 @@
     <title>Admin Dashboard</title>
     <!-- bootstrap css -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+
+    <!-- font awesome icon cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container">
@@ -62,11 +65,11 @@
                                         <td><?php echo $i + 1; ?></td>
                                         <td><?php echo $data[$i]['shift']; ?></td>
                                         <td>
-                                            <a href="edit_shift.php?id=<?php echo $data[$i]['shift_id']; ?>" class="btn btn-sm btn-primary">Edit</a></td>
+                                            <a href="edit_shift.php?id=<?php echo $data[$i]['shift_id']; ?>" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i> Edit</a></td>
                                         <td>
                                             <form action="" method="POST">
                                                 <input type="hidden" name="shift_id" value="<?php echo $data[$i]['shift_id']; ?>">
-                                                <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+                                                <button type="submit" value="" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i> Delete</button>
                                             </form>
                                         </td>
                                     </tr>
