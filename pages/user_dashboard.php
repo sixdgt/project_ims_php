@@ -14,11 +14,18 @@ if($_SESSION['is_verified'] == 0){
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>User Dashboard</title>
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     </head>
     <body>
-        Verified
-        <a href="../config/logout_handler.php">Logout</a>
+    <div class="container">
+        <div class="card p-5 mt-5">
+            <h1>Welcome <?php echo $_SESSION['user']['username']; ?></h1>
+            <div class="card-body">
+                <a href="../config/logout_handler.php">Logout</a>
+            </div>
+        </div>
+    </div>
     </body>
     </html>
     <?php
