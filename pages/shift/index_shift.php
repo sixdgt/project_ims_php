@@ -1,4 +1,5 @@
 <?php
+    require_once "../../config/shift_handler.php";
     session_start();
 
     if(isset($_SESSION['user'])){
@@ -26,7 +27,6 @@
 <body>
     <div class="container">
         <div class="card p-5 mt-5">
-            
             <h1>Manage SHIFT </h1>
             <div class="card-body">
                 <a href="add_shift.php" class="btn btn-primary mb-4">Add Shift</a>
@@ -40,12 +40,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Morning</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
+                        <?php
+                            $data = load_shift();
+                            for($i = 0; $i < sizeof($data); $i++){
+                                ?>
+                                    <tr>
+                                        <td><?php echo $i + 1; ?></td>
+                                        <td><?php echo $data[$i]['shift']; ?></td>
+                                        <td><a href="<?php echo $data[$i]['shift_id']; ?>">Edit</a></td>
+                                        <td><a href="<?php echo $data[$i]['shift_id']; ?>">Delete</a></td>
+                                    </tr>
+                                <?php
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
