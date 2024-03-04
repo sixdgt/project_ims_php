@@ -67,3 +67,20 @@ function load_shift_by_id(){
 
     return $response_data; 
 }
+
+function remove_shift(){
+    $id = $_POST['shift_id'];
+    $sql = "UPDATE ims_shift SET is_removed=1 WHERE shift_id=$id";
+    
+    // $rm_sql = "DELETE FROM ims_shift WHERE shift_id=$id";
+    // we have is_removed attribute so that we can update it instead of delete it from database therefore
+    // update query is used instead of delete query
+    $status = false;
+
+    $res = mysqli_query($GLOBALS['connection'], $sql);
+
+    if($res){
+        $status = true;
+    }
+    return $res;
+}

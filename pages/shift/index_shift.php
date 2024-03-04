@@ -1,7 +1,7 @@
 <?php
     require_once "../../config/shift_handler.php";
     session_start();
-
+    $message = "";
     if(isset($_SESSION['user'])){
         $usertype = $_SESSION['user']['usertype'];
         if($usertype === 1){
@@ -12,6 +12,12 @@
         echo "Access Forbidden";
         header("location: ../authentication/login.php?status=access forbidden");
         exit();
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        if(remove_shift()){
+            $message = "Shift removed successfully!!";
+        }
     }
 ?>
 
@@ -28,6 +34,14 @@
     <div class="container">
         <div class="card p-5 mt-5">
             <h1>Manage SHIFT </h1>
+            <?php if($message != ""){
+                ?>
+                <div class="alert alert-success">
+                    <?php echo $message; ?>
+                </div>
+                <?php
+            }
+            ?>
             <div class="card-body">
                 <a href="add_shift.php" class="btn btn-primary mb-4">Add Shift</a>
                 <a href="../admin_dashboard.php?status=success" class="btn btn-primary mb-4">Dashboard</a>
@@ -47,8 +61,14 @@
                                     <tr>
                                         <td><?php echo $i + 1; ?></td>
                                         <td><?php echo $data[$i]['shift']; ?></td>
-                                        <td><a href="edit_shift.php?id=<?php echo $data[$i]['shift_id']; ?>">Edit</a></td>
-                                        <td><a href="edit_shift.php?id=<?php echo $data[$i]['shift_id']; ?>">Delete</a></td>
+                                        <td>
+                                            <a href="edit_shift.php?id=<?php echo $data[$i]['shift_id']; ?>" class="btn btn-sm btn-primary">Edit</a></td>
+                                        <td>
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="shift_id" value="<?php echo $data[$i]['shift_id']; ?>">
+                                                <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php
                             }

@@ -49,7 +49,7 @@
             <a href="index_shift.php" class="btn btn-primary mb-4">Back</a>
                 <!-- loading shift by id from database -->
                 <?php $data = load_shift_by_id(); ?>
-
+                
                 <form action="" method="POST">
                     <div class="form-group mb-3">
                         <label for="shift">Shift</label>
