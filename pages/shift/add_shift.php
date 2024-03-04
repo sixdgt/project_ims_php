@@ -1,5 +1,9 @@
 <?php
+    require_once "../../config/shift_handler.php";
+
     session_start();
+
+    $message = "";
 
     if(isset($_SESSION['user'])){
         $usertype = $_SESSION['user']['usertype'];
@@ -11,6 +15,12 @@
         echo "Access Forbidden";
         header("location: ../authentication/login.php?status=access forbidden");
         exit();
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        if(add_shift()){
+            $message = "Shift added successfully!!";
+        }
     }
 ?>
 
@@ -27,6 +37,14 @@
     <div class="container">
         <div class="card p-5 mt-5">
             <h1>Manage SHIFT</h1>
+            <?php if($message != ""){
+                ?>
+                <div class="alert alert-success">
+                    <?php echo $message; ?>
+                </div>
+                <?php
+            }
+            ?>
             <div class="card-body">
             <a href="index_shift.php" class="btn btn-primary mb-4">Back</a>
                 <form action="" method="POST">

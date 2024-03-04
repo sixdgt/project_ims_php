@@ -26,9 +26,11 @@
 <body>
     <div class="container">
         <div class="card p-5 mt-5">
-            <h1>Manage SHIFT</h1>
+            
+            <h1>Manage SHIFT </h1>
             <div class="card-body">
                 <a href="add_shift.php" class="btn btn-primary mb-4">Add Shift</a>
+                <a href="../admin_dashboard.php?status=success" class="btn btn-primary mb-4">Dashboard</a>
                 <table class="table table-hover">
                     <thead>
                         <tr>
