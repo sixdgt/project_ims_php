@@ -47,8 +47,8 @@
                                     <tr>
                                         <td><?php echo $i + 1; ?></td>
                                         <td><?php echo $data[$i]['shift']; ?></td>
-                                        <td><a href="<?php echo $data[$i]['shift_id']; ?>">Edit</a></td>
-                                        <td><a href="<?php echo $data[$i]['shift_id']; ?>">Delete</a></td>
+                                        <td><a href="edit_shift.php?id=<?php echo $data[$i]['shift_id']; ?>">Edit</a></td>
+                                        <td><a href="edit_shift.php?id=<?php echo $data[$i]['shift_id']; ?>">Delete</a></td>
                                     </tr>
                                 <?php
                             }

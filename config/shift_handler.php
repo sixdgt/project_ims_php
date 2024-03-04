@@ -33,3 +33,37 @@ function load_shift(){
     return $response_data;
 }
 
+function update_shift(){
+    $shift = $_REQUEST['shift'];
+    $id = $_REQUEST['shift_id'];
+    $sql = "UPDATE ims_shift SET shift='$shift' WHERE shift_id=$id";
+
+    $status = false;
+
+    $res = mysqli_query($GLOBALS['connection'], $sql);
+
+    if($res){
+        $status = true;
+    }
+    return $res;
+}
+
+function load_shift_by_id(){
+    $id = $_GET['id'];
+
+    $response_data = array();
+
+    $sql = "SELECT * FROM ims_shift WHERE is_removed=0 AND shift_id=$id";
+
+    $db_data = mysqli_query($GLOBALS['connection'], $sql);
+    if(mysqli_num_rows($db_data) > 0){
+        while($row = mysqli_fetch_array($db_data)){
+            $response_data = array(
+                "shift_id" => $row['shift_id'],
+                "shift" => $row['shift']
+            );
+        }
+    }
+
+    return $response_data; 
+}

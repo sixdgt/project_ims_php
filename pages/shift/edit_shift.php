@@ -18,8 +18,8 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        if(add_shift()){
-            $message = "Shift added successfully!!";
+        if(update_shift()){
+            $message = "Shift updated successfully!!";
         }
     }
 ?>
@@ -47,12 +47,16 @@
             ?>
             <div class="card-body">
             <a href="index_shift.php" class="btn btn-primary mb-4">Back</a>
+                <!-- loading shift by id from database -->
+                <?php $data = load_shift_by_id(); ?>
+
                 <form action="" method="POST">
                     <div class="form-group mb-3">
                         <label for="shift">Shift</label>
-                        <input type="text" name="shift" id="shift" class="form-control">
+                        <input type="text" name="shift" id="shift" value="<?php echo $data['shift']; ?>" class="form-control">
                     </div>
-                    <input type="submit" value="Add Shift" class="btn btn-primary">
+                    <input type="hidden" name="shift_id" value="<?php echo $data['shift_id']; ?>">
+                    <input type="submit" value="Update Shift" class="btn btn-primary">
                 </form>
             </div>
         </div>
